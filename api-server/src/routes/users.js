@@ -5,5 +5,6 @@ import Authorize from "../middleware/Authorize";
 const router = Router();
 
 router.get("/users", Authorize.check, UsersController.index);
+router.get("/users/all", UsersController.findAll);
 
 export default router;

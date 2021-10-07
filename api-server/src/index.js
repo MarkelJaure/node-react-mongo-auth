@@ -6,16 +6,14 @@ import morgan from "morgan";
 import httpError from "http-errors";
 import routes from "./routes";
 import errorHandler from "./middleware/ErrorHandler";
-import config from "./config/app";
+var config = require('../../common/api-server/src/config/app');
 
 const app = express();
 
-const morganFormat = config.isDev ? "dev" : "combined";
+const morganFormat = process.env.isDev ? "dev" : "combined";
 app.use(morgan(morganFormat));
 
-mongoose
-  .connect(config.mongoUri, { useNewUrlParser: true })
-  .catch(err => console.log(err));
+config();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -29,6 +27,6 @@ app.use((req, res, next) => {
 
 app.use(errorHandler);
 
-app.listen(config.port, () => {
-  console.log(`Server started ${config.host}:${config.port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server started ${process.env.HOST}:${process.env.PORT}`);
 });

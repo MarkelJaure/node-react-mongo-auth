@@ -1,4 +1,4 @@
-import UserModel from "../models/User";
+const UserModel = require('../../../common/api-server/src/models/User');
 import PasswordService from "../services/PasswordService";
 import ClientError from "../exeptions/ClientError";
 import TryCatchErrorDecorator from "../decorators/TryCatchErrorDecorator";
@@ -186,6 +186,8 @@ class AuthController {
 
     res.json({ status: "success" });
   }
+
+
 }
 
 export default AuthController;
