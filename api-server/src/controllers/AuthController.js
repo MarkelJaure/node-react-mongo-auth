@@ -51,6 +51,7 @@ class AuthController {
     }
 
     const password = randomize.generateString(12);
+    console.log(password);
 
     const user = new UserModel({
       name: req.body.name,
