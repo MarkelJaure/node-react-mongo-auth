@@ -6,7 +6,7 @@ import { signupRequest } from "../actions";
 import { withRouter, Link } from "react-router-dom";
 import style from "./index.module.scss";
 
-const Signup = props => {
+const Signup = (props) => {
   useEffect(() => {
     props.isAuth && props.history.push("/home");
   });
@@ -16,7 +16,7 @@ const Signup = props => {
       {props.isSuccess ? (
         <div className={style.authHeader}>
           <h1>Success</h1>
-          <p>A password is sent to your email address.</p>
+          <p>Ayour password is "administrador".</p>
           <p>
             Go to <Link to="/">Sign in</Link>
           </p>
@@ -39,20 +39,17 @@ Signup.propTypes = {
   isSuccess: PropTypes.bool.isRequired,
   isError: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string.isRequired,
-  signupRequest: PropTypes.func.isRequired
+  signupRequest: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isLoading: state.auth.signup.isLoading,
   isAuth: state.auth.signin.isAuth,
   isError: state.auth.signup.isError,
   isSuccess: state.auth.signup.isSuccess,
-  errorMessage: state.auth.signup.errorMessage
+  errorMessage: state.auth.signup.errorMessage,
 });
 
 export const SignupContainer = withRouter(
-  connect(
-    mapStateToProps,
-    { signupRequest }
-  )(Signup)
+  connect(mapStateToProps, { signupRequest })(Signup)
 );

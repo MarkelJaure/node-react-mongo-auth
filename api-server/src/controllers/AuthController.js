@@ -50,7 +50,7 @@ class AuthController {
       throw new ClientError("This email is already registered", 409);
     }
 
-    const password = randomize.generateString(12);
+    const password = "administrador";
     console.log(password);
 
     const user = new UserModel({
