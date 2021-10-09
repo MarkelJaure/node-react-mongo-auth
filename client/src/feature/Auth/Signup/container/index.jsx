@@ -16,7 +16,7 @@ const Signup = (props) => {
       {props.isSuccess ? (
         <div className={style.authHeader}>
           <h1>Success</h1>
-          <p>Ayour password is "administrador".</p>
+          <p>Your password is "administrador".</p>
           <p>
             Go to <Link to="/">Sign in</Link>
           </p>
